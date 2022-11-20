@@ -93,7 +93,7 @@ fdynamics = @(X, Y, p) LotkaVolterraDynamics(X, Y, p);
 running_time = zeros(1, length(R));
 error_terminal = zeros(2, length(R));
 
-t2 = linspace(0, T, 20000);
+t2 = linspace(0, T, 20000+1);
 xt = RungeKutta9(fmodel, x0, t2, p);
 for i = 1:length(R)
     r = [R(i), R(i)];
@@ -162,7 +162,7 @@ fdynamics = @(X, Y, p) SimplePendulumDynamics(X, Y, p);
 running_time = zeros(1, length(R));
 error_terminal = zeros(2, length(R));
 
-t2 = linspace(0, T, 20000);
+t2 = linspace(0, T, 20000+1);
 xt = RungeKutta9(fmodel, x0, t2, p);
 for i = 1:length(R)
     r = [R(i), R(i)];

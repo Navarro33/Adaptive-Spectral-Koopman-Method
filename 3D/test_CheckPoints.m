@@ -27,7 +27,7 @@ fdynamics = @(X, Y, Z, p) KraichnanOrszagDynamics(X, Y, Z, p);
 running_time = zeros(1, length(n));
 error_terminal = zeros(3, length(n));
 
-t2 = linspace(0, T, 20000);
+t2 = linspace(0, T, 20000+1);
 xt = RungeKutta9(fmodel, x0, t2, p);
 for i = 1:length(n)
     tic;
@@ -95,7 +95,7 @@ fdynamics = @(X, Y, Z, p) LorenzDynamics(X, Y, Z, p);
 running_time = zeros(1, length(n));
 error_terminal = zeros(3, length(n));
 
-t2 = linspace(0, T, 20000);
+t2 = linspace(0, T, 20000+1);
 xt = RungeKutta9(fmodel, x0, t2, p);
 for i = 1:length(n)
     tic;
