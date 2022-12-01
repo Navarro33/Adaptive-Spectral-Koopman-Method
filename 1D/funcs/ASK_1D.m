@@ -61,7 +61,7 @@ c = compute_coef_1D(x_GL, V);
 % solve
 xn = zeros(1, n+1);
 xn(1) = x0;
-n_decomp = 0;
+n_decomp = 1;
 t_ind = 1;
 for j = 2:n+1
     % numerical solver

@@ -19,9 +19,10 @@ x2_GL = x_GL(:, 2);
 D1 = Ds.D1;
 D2 = Ds.D2;
 
-[X, Y] = meshgrid(x1_GL, x2_GL);
-X = X';
-Y = Y';
+[X, Y] = ndgrid(x1_GL, x2_GL);
+% [X, Y] = meshgrid(x1_GL, x2_GL);
+% X = X';
+% Y = Y';
 
 [F1, F2] = dynamics(X, Y, p);
 I = eye(N);

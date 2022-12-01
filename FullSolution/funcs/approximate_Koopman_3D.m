@@ -21,10 +21,10 @@ D1 = Ds.D1;
 D2 = Ds.D2;
 D3 = Ds.D3;
 
-[X, Y, Z] = meshgrid(x1_GL, x2_GL, x3_GL);
-X = pagetranspose(X);
-Y = pagetranspose(Y);
-%Z = pagetranspose(Z);
+[X, Y, Z] = ndgrid(x1_GL, x2_GL, x3_GL);
+% [X, Y, Z] = meshgrid(x1_GL, x2_GL, x3_GL);
+% X = pagetranspose(X);
+% Y = pagetranspose(Y);
 
 [F1, F2, F3] = dynamics(X, Y, Z, p);
 I = eye(N);
