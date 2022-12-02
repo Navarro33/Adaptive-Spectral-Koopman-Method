@@ -12,6 +12,11 @@ p.k = 1;
 
 fmodel = @(t, x, p) LimitCycle(t, x, p);
 fdynamics = @(X, Y, p) LimitCycleDynamics(X, Y, p);
+
+% reference
+ref = solve_limit_cycle(T, x0, p)';
+
+
 %% ASK
 n = 60;
 r = [sqrt(2)/10, sqrt(2)/10];
@@ -23,7 +28,7 @@ err_ASK = zeros(2, length(N));
 n_call_ASK = zeros(1, length(N));
 for s = 1:length(N)
     [sol, n_decomp] = ASK_2D(fdynamics, p, n, T, N(s), x0, r, frac, op);
-    err_ASK(:, s) = abs(sol - [sin(T+pi/4); sin(T-pi/4)]);
+    err_ASK(:, s) = abs(sol - ref);
     
     n_call_ASK(s) = N(s)^2 * n_decomp;
 end
@@ -40,7 +45,7 @@ for s = 1:m
     
     t = linspace(0, T, n_RK4(s)+1);
     sol = RungeKutta4(fmodel, x0, t, p);
-    err_RK4(:, s) = abs(sol(:, end) - [sin(T+pi/4); sin(T-pi/4)]);
+    err_RK4(:, s) = abs(sol(:, end) - ref);
     
     n_call_RK4(s) = 4*n_RK4(s);
 end
@@ -57,7 +62,7 @@ for s = 1:m
     
     t = linspace(0, T, n_RK9(s)+1);
     sol = RungeKutta9(fmodel, x0, t, p);
-    err_RK9(:, s) = abs(sol(:, end) - [sin(T+pi/4); sin(T-pi/4)]);
+    err_RK9(:, s) = abs(sol(:, end) - ref);
     
     n_call_RK9(s) = 14*n_RK9(s);
 end

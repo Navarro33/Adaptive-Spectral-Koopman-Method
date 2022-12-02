@@ -20,7 +20,7 @@ fmodel = @(t, x, p) LimitCycle(t, x, p);
 fdynamics = @(X, Y, p) LimitCycleDynamics(X, Y, p);
 
 %% Reference
-x_Ref = [sin(tspan + pi/4); sin(tspan - pi/4)];    % reference
+x_Ref = solve_limit_cycle(tspan, x0, p);    % reference
 
 %% ASK
 tic;

@@ -32,8 +32,7 @@ xt = RungeKutta4(fmodel, x0, tspan, p);
 elapsed2 = toc;
 fprintf('--- Runge-Kutta completed in %.4f seconds --- \n', elapsed2);
 
-xr = [sin(tspan + pi/4); sin(tspan - pi/4)];
-
+xr = solve_limit_cycle(tspan, x0, p);
 %% Errors
 Koopman_errors = abs(xn - xr);
 RungeKutta_errors = abs(xt - xr);

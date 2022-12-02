@@ -231,7 +231,7 @@ fdynamics = @(X, Y, p) LimitCycleDynamics(X, Y, p);
 running_time = zeros(1, length(R));
 error_terminal = zeros(2, length(R));
 
-xtT = [sin(T+pi/4); sin(T-pi/4)]; %closed-form
+xtT = solve_limit_cycle(T, x0, p)'; %closed-form
 for i = 1:length(R)
     r = [R(i), R(i)];
     tic;

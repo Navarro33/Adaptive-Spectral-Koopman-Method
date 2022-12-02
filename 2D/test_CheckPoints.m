@@ -228,7 +228,7 @@ fdynamics = @(X, Y, p) LimitCycleDynamics(X, Y, p);
 running_time = zeros(1, length(n));
 error_terminal = zeros(2, length(n));
 
-xtT = [sin(T+pi/4); sin(T-pi/4)]; %closed-form
+xtT = solve_limit_cycle(T, x0, p)'; %closed-form
 for i = 1:length(n)
     tic;
     [xnT, n_decomp] = ASK_2D(fdynamics, p, n(i), T, N, x0, r, frac, op);
